@@ -1,0 +1,58 @@
+from elasticsearch import Elasticsearch
+from elasticsearch.helpers import scan
+from flask import Flask
+import pandas as pd
+
+import os
+import logging
+import json
+
+app = Flask(__name__)
+
+HOST = os.getenv('ELASTIC', 'elasticsearch')
+PORT=os.getenv('PORT', '9200')
+
+es =  Elasticsearch(f"http://{HOST}:{PORT}")
+
+@app.route("/")
+def get_data_from_es ():
+
+    query = {
+    "query" : { "match_all" : {} },
+    "_source" : [ "@timestamp", "message" ]
+            }
+    try:
+
+        rel = scan(
+            client = es,
+            query = query,
+            index = 'kafka_logs',
+            raise_on_error=True
+        )
+
+        result = list(rel)
+
+        temp = []
+
+        for hit in result:
+            temp.append(hit['_source'])
+        
+        df= pd.DataFrame(temp)
+        
+
+        logging.info("completed getDataFromEs")
+        
+        return df.to_json(orient='records')
+    except Exception as e:
+      logging.warning(f"something went wrong in getDataFromEs - {e}")
+      return f"Something Went wrong - {e}"
+
+
+if __name__ == '__main__':
+    #flask config
+    app.run(host='0.0.0.0', port='8083')
+
+    #logger config
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(message)s',datefmt='%Y-%m-%d %H:%M:%S')
+    logging.info("inc start")
+

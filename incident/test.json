@@ -1,0 +1,139 @@
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 19,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "kafka_logs",
+        "_id" : "jxgA5pQBdjgVh49XuoWP",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:54.900323Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:54.900334 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"401 Unauthorized\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "jRgA5pQBdjgVh49XsoW7",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:52.897592Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:52.897603 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"400 Bad Request\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "lxgY5pQBdjgVh49Xu4Vi",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T15:06:07.982683Z",
+          "message" : "<102>MM - DD 2025-02-08T15:06:07.982691 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"403 Forbidden\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "mRgY5pQBdjgVh49Xw4U3",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T15:06:09.985253Z",
+          "message" : "<102>MM - DD 2025-02-08T15:06:09.985290 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "ihgA5pQBdjgVh49XVoWF",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:29.060581Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:29.060592 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "ixgA5pQBdjgVh49XqoXt",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:50.894278Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:50.894285 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "kBgA5pQBdjgVh49XvoV4",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:55.901344Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:55.901358 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "mBgY5pQBdjgVh49Xv4VJ",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T15:06:08.983942Z",
+          "message" : "<102>MM - DD 2025-02-08T15:06:08.983952 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "jBgA5pQBdjgVh49XroXU",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:51.896408Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:51.896419 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      },
+      {
+        "_index" : "kafka_logs",
+        "_id" : "jhgA5pQBdjgVh49XtoWl",
+        "_score" : 1.0,
+        "_ignored" : [
+          "event.original.keyword"
+        ],
+        "_source" : {
+          "@timestamp" : "2025-02-08T14:39:53.898803Z",
+          "message" : "<102>MM - DD 2025-02-08T14:39:53.898815 apic-prod-dc-mgmt-01.testAPI.co.in apimanagement[-]: {\"status_code\":\"\\\"200 OK\\\"\"}"
+        }
+      }
+    ]
+  }
+}

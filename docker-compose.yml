@@ -15,17 +15,23 @@ services:
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
       - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
     ports:
       - "9092:9092"
     volumes:
       - ./kafka_data:/bitnami/kafka
     networks:
       - kafka-network
+    healthcheck:   
+      test: ["CMD", "kafka-topics.sh", "--list", "--bootstrap-server", "kafka:9092"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
 
-  data-gen-producer:
+  data-producer:
     build:
       context: ./data
-    container_name: data-gen
+    container_name: data-producer
     depends_on:
       - kafka
     environment:
@@ -35,6 +41,37 @@ services:
     networks:
       - kafka-network 
     command: python synthetic_data_gen.py
+  
+  anomaly-detect:
+    build:
+      context: ./anomaly
+    container_name: anomaly-detect
+    depends_on:
+      kafka:
+        condition: service_healthy 
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092 
+    ports:
+      - "8081:8081"
+    networks:
+      - kafka-network 
+    command: python anomaly.py
+
+  incident:
+    build:
+      context: ./incident
+    container_name: incident
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTIC=elasticsearch
+      - PORT=9200 
+    ports:
+      - "8083:8083"
+    networks:
+      - kafka-network 
+    command: python inc.py
+  
   
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
