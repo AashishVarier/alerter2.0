@@ -66,8 +66,6 @@ services:
     environment:
       - ELASTIC=elasticsearch
       - PORT=9200 
-    ports:
-      - "8083:8083"
     networks:
       - kafka-network 
     command: python inc.py
