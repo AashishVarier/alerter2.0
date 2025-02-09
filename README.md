@@ -7,4 +7,4 @@
 - Anomaly Detection (pending)
 - Alerter (pending)
 
-Read more about it [here] (https://variableduck.com/blog/blog4.html).
+Read more about it [here](https://variableduck.com/blog/blog4.html).
