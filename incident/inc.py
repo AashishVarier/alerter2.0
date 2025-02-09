@@ -15,7 +15,14 @@ es =  Elasticsearch(f"http://{HOST}:{PORT}")
 def get_data_from_es ():
 
     query = {
-    "query" : { "match_all" : {} },
+    "query" : {
+    "range": {
+      "@timestamp": {
+        "gte": "now-5m/m",
+        "lte": "now/m"
+      }
+    }
+  },
     "_source" : [ "@timestamp", "message" ]
             }
     try:

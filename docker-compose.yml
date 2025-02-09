@@ -69,8 +69,7 @@ services:
     networks:
       - kafka-network 
     command: python inc.py
-  
-  
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
     container_name: elasticsearch
