@@ -1,4 +1,3 @@
-## pending unitest
 from confluent_kafka import Producer
 from flask import Flask
 import datetime
@@ -45,7 +44,7 @@ def data_gen(numEntry):
           "@version": "1",
           "@timestamp": datetime.datetime.now().isoformat() + "Z",
           "port": 55000 + i ,
-          "message":  baseMsg.format(time_stamp = datetime.datetime.now().isoformat() , status_code = random.choices(statusCode, weights=[5, 5, 5, 5, 5, 80], k =1)[0] ) ,
+          "message":  baseMsg.format(time_stamp = datetime.datetime.now().isoformat() , status_code = random.choices(statusCode, weights=[20, 5, 5, 5, 5, 60], k =1)[0] ) ,
           "type": "apitcp"
         }
         producer.produce('raw_data_topic', key=str(i), value = json.dumps(logs), callback=kafka_delivery_repot )
