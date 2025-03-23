@@ -16,7 +16,9 @@
 docker-compose up
 ```
 - Use the following endpoint to generate data:
+```
 > http://localhost:8080/data-gen/<number-of-entries>
+```
 
 
 Read more about it [here](https://variableduck.com/blog/blog4.html).
