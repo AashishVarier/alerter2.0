@@ -42,21 +42,6 @@ services:
       - kafka-network 
     command: python synthetic_data_gen.py
   
-  anomaly-detect:
-    build:
-      context: ./anomaly
-    container_name: anomaly-detect
-    depends_on:
-      kafka:
-        condition: service_healthy 
-    environment:
-      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092 
-    ports:
-      - "8081:8081"
-    networks:
-      - kafka-network 
-    command: python anomaly.py
-
   incident:
     build:
       context: ./incident
@@ -75,6 +60,20 @@ services:
       - kafka-network 
     command: python inc.py
 
+  alert:
+    build:
+      context: ./alert
+    container_name: alert
+    depends_on:
+      - kafka
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092 
+    ports:
+      - "8083:8083"
+    networks:
+      - kafka-network 
+    command: python alert.py
+    
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
     container_name: elasticsearch

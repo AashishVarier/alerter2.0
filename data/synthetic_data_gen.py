@@ -38,13 +38,14 @@ def data_gen(numEntry):
   ]
   logging.info(f"in data_gen with parameter {numEntry}")
   try:
+    # output = []
     for i in range(numEntry):
         logs =  {
           "host": f"10.123.17.{random.randint(1, 4)}",
           "@version": "1",
           "@timestamp": datetime.datetime.now().isoformat() + "Z",
           "port": 55000 + i ,
-          "message":  baseMsg.format(time_stamp = datetime.datetime.now().isoformat() , status_code = random.choices(statusCode, weights=[20, 5, 5, 5, 5, 60], k =1)[0] ) ,
+          "message":  baseMsg.format(time_stamp = datetime.datetime.now().isoformat() , status_code = random.choices(statusCode, weights=[5, 5, 5, 5, 5, 75], k =1)[0] ) ,
           "type": "apitcp"
         }
         producer.produce('raw_data_topic', key=str(i), value = json.dumps(logs), callback=kafka_delivery_repot )
@@ -52,8 +53,15 @@ def data_gen(numEntry):
         # poll to handle delivery report
         producer.poll(0)
         
+        #generate test data 
+        # output.append(logs)
+        # f = open("test.json", "a")
+        # f.write(json.dumps(output))
+        # f.close()
+
         #simulating delay for log generation
         time.sleep(1)
+        
 
     logging.info( f"{numEntry} data generated succsfully")
   

@@ -6,6 +6,6 @@ COPY . .
 
 RUN pip install -r requirement.txt
 
-EXPOSE 8081
+EXPOSE 8083
 
-CMD [ "python3", "anomaly.py" ]
+CMD [ "python3", "alert.py" ]
